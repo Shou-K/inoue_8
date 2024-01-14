@@ -1,48 +1,48 @@
-import pygame
-import sys
-import random
+ import pygame
+ import sys
+ import random
 
-pygame.init()
+ pygame.init()
 
-screen_width, screen_height = 600, 400
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("100戦錬磨")
+ screen_width, screen_height = 600, 400
+ screen = pygame.display.set_mode((screen_width, screen_height))
+ pygame.display.set_caption("100戦錬磨")
 
-player_image = pygame.image.load("data/img/chara.png")
-enemy_image = pygame.image.load("data/img/enemy.png")
-background_image = pygame.image.load("data/img/back.png")
+ player_image = pygame.image.load("data/img/chara.png")
+ enemy_image = pygame.image.load("data/img/enemy.png")
+ background_image = pygame.image.load("data/img/back.png")
 
-white = (255, 255, 255)
-black = (0, 0, 0)
-red = (255, 0, 0)
+ white = (255, 255, 255)
+ black = (0, 0, 0)
+ red = (255, 0, 0)
 
-player_rect = player_image.get_rect()
-player_rect.center = (screen_width // 2, screen_height - player_rect.height - 10)
-player_speed = 35
+ player_rect = player_image.get_rect()
+ player_rect.center = (screen_width // 2, screen_height - player_rect.height - 10)
+ player_speed = 35
 
-bullet_size = 10
-bullet_speed = 7
-bullets = []
+ bullet_size = 10
+ bullet_speed = 7
+ bullets = []
 
-enemy_size = 50
-enemy_speed = 3
-enemies = []
+ enemy_size = 50
+ enemy_speed = 3
+ enemies = []
 
-score = 0
-font = pygame.font.Font(None, 36)
+ score = 0
+ font = pygame.font.Font(None, 36)
 
-def draw_bullet(x, y):
+ def draw_bullet(x, y):
     pygame.draw.rect(screen, white, [x, y, bullet_size, bullet_size])
 
-def show_score(score):
+ def show_score(score):
     score_text = font.render("Score: " + str(score), True, white)
     screen.blit(score_text, [10, 10])
 
-clock = pygame.time.Clock()
-accelerate_once = True
-game_clear = False
+ clock = pygame.time.Clock()
+ accelerate_once = True
+ game_clear = False
 
-while not game_clear:
+ while not game_clear:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -110,12 +110,12 @@ while not game_clear:
     
     clock.tick(60)
 
-font_game_clear = pygame.font.Font(None, 72)
-text_game_clear = font_game_clear.render("Game Clear!",True,white)
-text_rect_game_clear = text_game_clear.get_rect(center=(screen_width // 2, screen_height // 2))
-screen.blit(text_game_clear, text_rect_game_clear)
-pygame.display.flip()
+ font_game_clear = pygame.font.Font(None, 72)
+ text_game_clear = font_game_clear.render("Game Clear!",True,white)
+ text_rect_game_clear = text_game_clear.get_rect(center=(screen_width // 2, screen_height // 2))
+ screen.blit(text_game_clear, text_rect_game_clear)
+ pygame.display.flip()
 
-pygame.time.wait(2000)
-pygame.quit()
-sys.exit()
+ pygame.time.wait(2000)
+ pygame.quit()
+ sys.exit()
